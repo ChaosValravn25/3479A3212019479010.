@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/flutter_svg.dart'; // Asegurar que se usa correctamente
+import 'package:logger/logger.dart';
+
 void main() {
+  var logger = Logger();
+  logger.d("Logger iniciado correctamente"); // Mensaje de prueba
+
   runApp(const MyApp());
 }
 
@@ -10,11 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Contador en Flutter',//cambiar el titulo
+      title: 'Contador Mejorado en Flutter', // Cambio del título
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),//cambiar el color
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue), // Cambio de color
+        fontFamily: 'BungeeSpice', // Fuente personalizada
       ),
-      home: const MyHomePage(title: 'Contador en Flutter'),
+      home: const MyHomePage(title: 'Contador Mejorado'),
     );
   }
 }
@@ -30,26 +36,30 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  final Logger logger = Logger(); // Logger para esta clase
 
-  void _incrementCounter() {//incrementa el contador
+  void _incrementCounter() {
     setState(() {
       _counter++;
     });
+    logger.i("Contador incrementado a $_counter");
   }
 
-  void _decrementCounter() {//disminuye el contador
+  void _decrementCounter() {
     setState(() {
       _counter--;
     });
+    logger.w("Contador decrementado a $_counter");
   }
 
   void _resetCounter() {
     setState(() {
       _counter = 0;
     });
+    logger.e("Contador reiniciado");
   }
 
-  Widget botonesInferiores() {//los botones
+  Widget botonesInferiores() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -70,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
-  Widget build(BuildContext context) {//la estructura visible como se debe mostrar el usuario
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -80,6 +90,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            // Icono SVG agregado
+            SvgPicture.asset(
+              'assets/icons/animal-carnivore-cartoon-5-svgrepo-com.svg', // Asegúrate de que el archivo existe
+              width: 100,
+              height: 100,
+            ),
+            const SizedBox(height: 20), // Espaciado entre elementos
             const Text('Has presionado el botón estas veces:'),
             Text(
               '$_counter',
