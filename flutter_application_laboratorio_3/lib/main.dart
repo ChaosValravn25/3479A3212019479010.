@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Contador Mejorado en Flutter', // Cambio del título
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue), // Cambio de color
-        fontFamily: 'BungeeSpice', // Fuente personalizada
+        fontFamily: 'Lato', // Fuente personalizada
       ),
       home: const MyHomePage(title: 'Contador Mejorado'),
     );
