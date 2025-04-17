@@ -60,7 +60,7 @@ dev_dependencies:
 flutter:
 
   assets:
-    - assets/icons/animal-carnivore-cartoon-5-svgrepo-com.svg
+    - assets/icons/snake.svg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
