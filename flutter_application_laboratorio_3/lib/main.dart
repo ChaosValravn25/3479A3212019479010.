@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             // Icono SVG agregado
             SvgPicture.asset(
-              'assets/icons/animal-carnivore-cartoon-5-svgrepo-com.svg', // Asegúrate de que el archivo existe
+              'assets/icons/snake.svg', // donde llamara la imagen svg
               width: 100,
               height: 100,
             ),
