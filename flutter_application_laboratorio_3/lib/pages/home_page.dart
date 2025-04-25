@@ -59,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Card(
+          color: Colors.lightGreen[50],
           margin: const EdgeInsets.all(20),
           elevation: 4,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -74,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  'Flutter es un framework UI de Google.',//las letras descargadas por google font
+                  'Inicio',
                   style: TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 8),
