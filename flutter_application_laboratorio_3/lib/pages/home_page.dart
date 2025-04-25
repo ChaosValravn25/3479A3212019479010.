@@ -37,26 +37,19 @@ class _MyHomePageState extends State<MyHomePage> {
     logger.e("Contador reiniciado");
   }
 
-  Widget botonesInferiores() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        ElevatedButton(
-          onPressed: _decrementCounter,
-          child: const Icon(Icons.remove),
-        ),
-        ElevatedButton(
-          onPressed: _resetCounter,
-          child: const Icon(Icons.refresh),
-        ),
-        ElevatedButton(
-          onPressed: _incrementCounter,
-          child: const Icon(Icons.add),
-        ),
-      ],
-    );
+   void _navegarSegunParidad() {
+    if (_counter % 2 == 0) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const ListContent()),
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const About()),
+      );
+    }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,24 +58,49 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SvgPicture.asset(
-              'assets/icons/snake.svg',
-              width: 100,
-              height: 100,
+        child: Card(
+          margin: const EdgeInsets.all(20),
+          elevation: 4,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SvgPicture.asset(
+                  'assets/icons/snake.svg',//icono serpiente
+                  width: 100,
+                  height: 100,
+                ),
+                const SizedBox(height: 16),
+                const Text(
+                  'Flutter es un framework UI de Google.',//las letras descargadas por google font
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Contador: $_counter',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    IconButton(onPressed: _decrementCounter, icon: const Icon(Icons.remove)),
+                    IconButton(onPressed: _resetCounter, icon: const Icon(Icons.refresh)),
+                    IconButton(onPressed: _incrementCounter, icon: const Icon(Icons.add)),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: _navegarSegunParidad,
+                  child: const Text("Ir a pantalla condicional"),
+                )
+              ],
             ),
-            const SizedBox(height: 20),
-            const Text('Has presionado el botón estas veces:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+          ),
         ),
       ),
-      persistentFooterButtons: [botonesInferiores()],
     );
   }
 }
