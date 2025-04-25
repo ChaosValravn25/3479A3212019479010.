@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';//para que funcione las imagenes de svg
 import 'package:logger/logger.dart';//para emplear el logger 
-import 'about.dart';
-import 'list_content.dart';
+import 'package:flutter_application_laboratorio_3/pages/about.dart';
+import 'package:flutter_application_laboratorio_3/pages/list_content.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
