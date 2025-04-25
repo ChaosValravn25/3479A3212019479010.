@@ -9,12 +9,12 @@ class About extends StatelessWidget {
       appBar: AppBar(title: const Text("Sobre la app")),
       body: const Center(
         child: Text(
-          "Aplicación hecha en Flutter para laboratorio.\nAutor: Ivonne Santander Soto",
+          "Aplicación hecha en Flutter para laboratorio.\nAutor: Ivonne Santander Soto",//colocar el nombre del desarrollador
           textAlign: TextAlign.center,
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pop(context),
+        onPressed: () => Navigator.pop(context),//un pequeño boton 
         child: const Icon(Icons.arrow_back),
       ),
     );

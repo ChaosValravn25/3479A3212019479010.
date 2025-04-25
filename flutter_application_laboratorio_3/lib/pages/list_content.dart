@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'about.dart';
+import 'about.dart';//llamar el boton de acerca del desarrollador
 
 class ListContent extends StatelessWidget {
   const ListContent({super.key});
 
-  final List<String> items = const [
+  final List<String> items = const [//opciones
     "Elemento 1",
     "Elemento 2",
     "Elemento 3",

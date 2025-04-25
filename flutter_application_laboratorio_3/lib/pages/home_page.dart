@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';//para que funcione las imagenes de svg
 import 'package:logger/logger.dart';//para emplear el logger 
-import 'package:flutter_application_laboratorio_3/pages/about.dart';
-import 'package:flutter_application_laboratorio_3/pages/list_content.dart';
+import 'package:flutter_application_laboratorio_3/pages/about.dart';//llamar el about
+import 'package:flutter_application_laboratorio_3/pages/list_content.dart';//llamar list_content
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
     logger.e("Contador reiniciado");
   }
 
-   void _navegarSegunParidad() {
+   void _navegarSegunParidad() {//para emplear el Navigator
     if (_counter % 2 == 0) {
       Navigator.push(
         context,
@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Card(
-          color: Colors.lightGreen[50],
+          color: Colors.lightGreen[50],//color del fondo
           margin: const EdgeInsets.all(20),
           elevation: 4,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 const SizedBox(height: 16),
-                Row(
+                Row(//reacomondando los botones del laboratorio anterior
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     IconButton(onPressed: _decrementCounter, icon: const Icon(Icons.remove)),
