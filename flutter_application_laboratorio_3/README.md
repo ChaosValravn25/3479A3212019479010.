@@ -1,19 +1,47 @@
-# flutter_application_laboratorio_3
 
-A new Flutter project.
+# Project Title: DinoVerse
 
-nombre: Ivonne Santander Soto
+Integrante: Ivonne Santander soto
+
+Asignatura: Programación de Dispositivos Móviles
+
 Matricula: 2019479010
 
-## Getting Started
+DinoVerse es una aplicación móvil desarrollada con Flutter que funciona como una enciclopedia de dinosaurios. Permite explorar especies, ver detalles, realizar trivias educativas y navegar entre pantallas.
 
-This project is a starting point for a Flutter application.
+## Características principales
+- Pantalla Splash con bienvenida visual.
 
-A few resources to get you started if this is your first Flutter project:
+- Pantalla principal con navegación a secciones.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Lista de dinosaurios con navegación a detalles.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Vista detallada de cada dinosaurio (imagen, descripción, datos).
+
+- Trivia educativa sobre dinosaurios.
+
+- Página de perfil o "Sobre la App".
+
+- Navegación entre pantallas usando Navigator.push() y pop().
+
+- Implementación de widgets personalizados y estructura modular.
+
+
+
+
+
+
+## Tecnologías utilizadas
+
+- Flutter 3.x
+
+- Dart
+
+- Material Design
+
+- Navigator para navegación
+
+- Widgets personalizados (Card, ListView.builder, SvgPicture)
+
+- flutter_svg para iconos en formato SVG
+

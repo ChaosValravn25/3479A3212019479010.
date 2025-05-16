@@ -9,7 +9,7 @@ class SplashScreen extends StatelessWidget {
     Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Wiki DinoVerse',)),
+        MaterialPageRoute(builder: (context) => HomePage()),
       );
     });
 

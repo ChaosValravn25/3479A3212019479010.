@@ -18,7 +18,9 @@ class About extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text("Esta app permite explorar una colección de dinosaurios, ver detalles y responder trivia. Desarrollada en Flutter como maqueta funcional."),
-          ],
+            
+            //Text("realizado por: Ivonne Santander Soto"),
+             ],
         ),
       ),
     );
