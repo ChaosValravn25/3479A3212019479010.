@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';//para que funcione las imagenes de svg
+//import 'package:flutter_svg/flutter_svg.dart';//para que funcione las imagenes de svg
 import 'package:logger/logger.dart';//para emplear el logger 
 import 'package:flutter_application_laboratorio_3/pages/about.dart';//llamar el about
 import 'package:flutter_application_laboratorio_3/pages/list_content.dart';//llamar list_content
@@ -51,40 +51,27 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: const Text("DinoVerse")),
       body: Center(
         child: Card(
-          color: Colors.lightGreen[50],//color del fondo
-          margin: const EdgeInsets.all(20),
+          color: Colors.green[50],
+          margin: const EdgeInsets.all(16),
           elevation: 4,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(20),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SvgPicture.asset(
-                  'assets/icons/snake.svg',//icono serpiente
-                  width: 100,
-                  height: 100,
-                ),
-                const SizedBox(height: 16),
                 const Text(
-                  'Inicio',
-                  style: TextStyle(fontSize: 16),
+                  "Bienvenido a DinoVerse",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  'Contador: $_counter',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                const SizedBox(height: 16),
-                Row(//reacomondando los botones del laboratorio anterior
+                const SizedBox(height: 10),
+                Text("Has presionado el botón $_counter veces."),
+                const SizedBox(height: 10),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     IconButton(onPressed: _decrementCounter, icon: const Icon(Icons.remove)),
@@ -92,16 +79,17 @@ class _MyHomePageState extends State<MyHomePage> {
                     IconButton(onPressed: _incrementCounter, icon: const Icon(Icons.add)),
                   ],
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: _navegarSegunParidad,
-                  child: const Text("Ir a pantalla condicional"),
-                )
+                  child: const Text("Ir a pantalla"),
+                ),
               ],
             ),
           ),
         ),
       ),
     );
+  
   }
 }

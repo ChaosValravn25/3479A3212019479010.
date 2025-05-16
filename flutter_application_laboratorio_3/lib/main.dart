@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'pages/home_page.dart'; // ¡Esto es clave! para llamar a home_page
-
+import 'pages/splash_screen.dart';
 void main() {
   var logger = Logger();
   logger.d("Logger iniciado correctamente");
 
-  runApp(const MyApp());
+  runApp(const DinoVerseApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class DinoVerseApp extends StatelessWidget {
+  const DinoVerseApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Contador Mejorado en Flutter',
+      title: 'DinoVerse',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         fontFamily: 'Lato',
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Contador Mejorado'), // usa el nuevo widget
+      home: SplashScreen(),
     );
   }
 }

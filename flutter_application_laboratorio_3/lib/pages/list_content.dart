@@ -4,22 +4,23 @@ import 'about.dart';//llamar el boton de acerca del desarrollador
 class ListContent extends StatelessWidget {
   const ListContent({super.key});
 
-  final List<String> items = const [//opciones
-    "Elemento 1",
-    "Elemento 2",
-    "Elemento 3",
-    "Elemento 4",
-    "Elemento 5",
-  ];
+  
+  final List<String> dinos = const [
+    "Tyrannosaurus Rex",
+    "Triceratops",
+    "Velociraptor",
+    "Brachiosaurus",
+    "Spinosaurus",
+    ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Lista de Contenido")),
+      appBar: AppBar(title: const Text("Lista de Dinosaurios")),
       body: ListView.builder(
-        itemCount: items.length,
+        itemCount: dinos.length,
         itemBuilder: (context, index) => ListTile(
-          title: Text(items[index]),
+          title: Text(dinos[index]),
         ),
       ),
       floatingActionButton: FloatingActionButton(
