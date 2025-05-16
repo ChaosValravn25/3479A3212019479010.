@@ -1,17 +1,39 @@
+// list_content.dart
 import 'package:flutter/material.dart';
-import 'about.dart';//llamar el boton de acerca del desarrollador
+import 'about.dart';
+import 'package:flutter_application_laboratorio_3/pages/models/dinosaur.dart';
+import 'package:flutter_application_laboratorio_3/pages/detail_pages.dart';
 
 class ListContent extends StatelessWidget {
-  const ListContent({super.key});
+  ListContent({super.key});
 
-  
-  final List<String> dinos = const [
-    "Tyrannosaurus Rex",
-    "Triceratops",
-    "Velociraptor",
-    "Brachiosaurus",
-    "Spinosaurus",
-    ];
+  final List<Dinosaur> dinos = [
+    Dinosaur(
+      name: "Tyrannosaurus Rex",
+      imagePath: 'assets/images/t_rex.png',
+      description: "Uno de los depredadores más grandes del periodo Cretácico.",
+    ),
+     Dinosaur(
+      name: "Triceratops",
+      imagePath: 'assets/images/triceratops.png',
+      description: "Herbívoro con tres cuernos y un escudo óseo.",
+    ),
+    Dinosaur(
+      name: "Velociraptor",
+      imagePath: 'assets/images/velociraptor.png',
+      description: "Dinosaurio ágil y rápido, cazador en grupo.",
+    ),
+    Dinosaur(
+      name: "Brachiosaurus",
+      imagePath: 'assets/images/brachiosaurus.png',
+      description: "Gigante herbívoro con cuello largo del Jurásico.",
+    ),
+    Dinosaur(
+      name: "Spinosaurus",
+      imagePath: 'assets/images/Spinosaurus.png',
+      description: "Dinosaurio semiacuático con espina dorsal distintiva.",
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +42,15 @@ class ListContent extends StatelessWidget {
       body: ListView.builder(
         itemCount: dinos.length,
         itemBuilder: (context, index) => ListTile(
-          title: Text(dinos[index]),
+          title: Text(dinos[index].name),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => DetailPage(dinosaur: dinos[index]),
+              ),
+            );
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -35,3 +65,4 @@ class ListContent extends StatelessWidget {
     );
   }
 }
+

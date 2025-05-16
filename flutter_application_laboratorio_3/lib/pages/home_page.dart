@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => const ListContent()),
+                    MaterialPageRoute(builder: (_) => ListContent()),
                   ),
                   child: const Text("Explorar Dinosaurios"),
                 ),
