@@ -1,105 +1,99 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';//para que funcione las imagenes de svg
-import 'package:logger/logger.dart';//para emplear el logger 
+//import 'package:flutter_svg/flutter_svg.dart';//para que funcione las imagenes de svg
+//import 'package:logger/logger.dart';//para emplear el logger 
 import 'package:flutter_application_laboratorio_3/pages/about.dart';//llamar el about
-import 'package:flutter_application_laboratorio_3/pages/list_content.dart';//llamar list_content
+//import 'package:flutter_application_laboratorio_3/pages/list_content.dart';//llamar list_content
+import 'package:provider/provider.dart';
+import 'package:flutter_application_laboratorio_3/provider/app_data.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key});
+  
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
+
+@override
+  State<MyHomePage> createState() {
+    print("🟨 createState() llamado");
+    return _HomePageState();
+  }
+
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  final Logger logger = Logger();
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-    logger.i("Contador incrementado a $_counter");
+
+class _HomePageState extends State<MyHomePage> {
+
+
+  @override
+  void initState() {
+    super.initState();
+    print("🟢 initState()");
   }
 
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-    logger.w("Contador decrementado a $_counter");
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("🔵 didChangeDependencies()");
   }
 
-  void _resetCounter() {
-    setState(() {
-      _counter = 0;
-    });
-    logger.e("Contador reiniciado");
+  @override
+  void didUpdateWidget(MyHomePage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print("🟣 didUpdateWidget()");
   }
 
-   void _navegarSegunParidad() {//para emplear el Navigator
-    if (_counter % 2 == 0) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (_) => const ListContent()),
-      );
-    } else {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (_) => const About()),
-      );
-    }
+  @override
+  void deactivate() {
+    super.deactivate();
+    print("🟠 deactivate()");
   }
+
+  @override
+  void dispose() {
+    print("🔴 dispose()");
+    super.dispose();
+  }
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    print("⚪ reassemble() (Hot Reload)");
+  }
+
   @override
   Widget build(BuildContext context) {
+    final data = context.watch<AppData>();
+    print("🟤 build()");
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Card(
-          color: Colors.lightGreen[50],//color del fondo
-          margin: const EdgeInsets.all(20),
-          elevation: 4,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+      appBar: AppBar(title: const Text("Estado del Widget")),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Bienvenido ${data.username}", style: const TextStyle(fontSize: 20)),
+            const SizedBox(height: 20),
+            Text("Contador: ${data.counter}", style: const TextStyle(fontSize: 32)),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SvgPicture.asset(
-                  'assets/icons/snake.svg',//icono serpiente
-                  width: 100,
-                  height: 100,
-                ),
-                const SizedBox(height: 16),
-                const Text(
-                  'Inicio',
-                  style: TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Contador: $_counter',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                const SizedBox(height: 16),
-                Row(//reacomondando los botones del laboratorio anterior
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(onPressed: _decrementCounter, icon: const Icon(Icons.remove)),
-                    IconButton(onPressed: _resetCounter, icon: const Icon(Icons.refresh)),
-                    IconButton(onPressed: _incrementCounter, icon: const Icon(Icons.add)),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: _navegarSegunParidad,
-                  child: const Text("Ir a pantalla condicional"),
-                )
+                ElevatedButton(onPressed: data.increment, child: const Text("+")),
+                ElevatedButton(onPressed: data.decrement, child: const Text("-")),
+                if (data.resetEnabled)
+                  ElevatedButton(onPressed: data.reset, child: const Text("Reset")),
               ],
             ),
-          ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const About()),
+              ),
+              child: const Text("Ir a About"),
+            )
+          ],
         ),
       ),
     );

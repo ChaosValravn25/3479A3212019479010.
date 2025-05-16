@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
-import 'pages/home_page.dart'; // ¡Esto es clave! para llamar a home_page
+import 'package:provider/provider.dart';
+import 'provider/app_data.dart';
+import 'pages/home_page.dart';
 
 void main() {
-  var logger = Logger();
-  logger.d("Logger iniciado correctamente");
-
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => AppData(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,12 +18,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Contador Mejorado en Flutter',
+      title: 'Stateful Widget Lab',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        fontFamily: 'Lato',
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Contador Mejorado'), // usa el nuevo widget
+      home: const MyHomePage(),
     );
   }
 }
