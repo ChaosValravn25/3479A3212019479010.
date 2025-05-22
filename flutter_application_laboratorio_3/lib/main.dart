@@ -17,13 +17,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("🟩 build() en MyApp ejecutado");
     return MaterialApp(
-      title: 'Stateful Widget Lab',
+      title: 'Flutter Estados Widget',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: const MyHomePage(title: 'Página Principal'),
     );
   }
 }

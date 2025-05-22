@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_application_laboratorio_3/provider/app_data.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  const MyHomePage({super.key, required String title});
   
 
 
