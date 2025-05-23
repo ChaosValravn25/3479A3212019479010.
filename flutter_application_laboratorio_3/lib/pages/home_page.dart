@@ -13,7 +13,7 @@ class MyHomePage extends StatefulWidget {
 
 @override
   State<MyHomePage> createState() {
-    print("🟨 createState() llamado");
+    
     return _HomePageState();
   }
 
@@ -27,43 +27,43 @@ class _HomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    print("🟢 initState()");
+    
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    print("🔵 didChangeDependencies()");
+    
   }
 
   @override
   void didUpdateWidget(MyHomePage oldWidget) {
     super.didUpdateWidget(oldWidget);
-    print("🟣 didUpdateWidget()");
+    
   }
 
   @override
   void deactivate() {
     super.deactivate();
-    print("🟠 deactivate()");
+    
   }
 
   @override
   void dispose() {
-    print("🔴 dispose()");
+    
     super.dispose();
   }
 
   @override
   void reassemble() {
     super.reassemble();
-    print("⚪ reassemble() (Hot Reload)");
+    
   }
 
   @override
   Widget build(BuildContext context) {
     final data = context.watch<AppData>();
-    print("🟤 build()");
+    
 
     return Scaffold(
       appBar: AppBar(title: const Text("Estado del Widget")),
