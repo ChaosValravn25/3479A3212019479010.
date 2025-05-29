@@ -5,7 +5,8 @@ import 'package:flutter_application_laboratorio_3/pages/about.dart';//llamar el 
 //import 'package:flutter_application_laboratorio_3/pages/list_content.dart';//llamar list_content
 import 'package:provider/provider.dart';
 import 'package:flutter_application_laboratorio_3/provider/app_data.dart';
-
+import 'package:flutter_application_laboratorio_3/pages/preferences_page.dart';
+import 'package:flutter_application_laboratorio_3/pages/activity_page.dart';
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required String title});
   
@@ -92,7 +93,24 @@ class _HomePageState extends State<MyHomePage> {
                 MaterialPageRoute(builder: (_) => const About()),
               ),
               child: const Text("Ir a About"),
-            )
+            ),
+
+            ElevatedButton(
+            onPressed: () => Navigator.push(
+             context,
+            MaterialPageRoute(builder: (_) => const PreferencesPage()),
+            ),
+            child: const Text("Preferencias"),
+            ),
+            ElevatedButton(
+            onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const ActivityPage()),
+            ),
+            child: const Text("Actividades"),
+            ),
+
+
           ],
         ),
       ),
