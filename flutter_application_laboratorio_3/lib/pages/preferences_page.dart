@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_laboratorio_3/provider/app_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
+
+
 
 class PreferencesPage extends StatefulWidget {
   const PreferencesPage({super.key});
@@ -34,6 +38,7 @@ class _PreferencesPageState extends State<PreferencesPage> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<AppData>(context);
     return Scaffold(
       appBar: AppBar(title: const Text("Preferencias")),
       body: Padding(
@@ -49,6 +54,7 @@ class _PreferencesPageState extends State<PreferencesPage> {
               value: darkMode,
               onChanged: (value) {
                 setState(() => darkMode = value);
+                themeProvider.toggleTheme(value);
               },
             ),
             ElevatedButton(
