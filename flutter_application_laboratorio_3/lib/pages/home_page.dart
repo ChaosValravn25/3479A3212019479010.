@@ -8,6 +8,14 @@ import 'package:flutter_application_laboratorio_3/provider/app_data.dart';
 import 'package:flutter_application_laboratorio_3/pages/preferences_page.dart';
 import 'package:flutter_application_laboratorio_3/pages/activity_page.dart';
 import 'package:http/http.dart' as http;
+import 'package:camera/camera.dart';
+import 'package:flutter_application_laboratorio_3/pages/take_picture_screen.dart';
+import 'dart:io';
+String _imagePath = '';
+List<CameraDescription> _cameras = [];
+CameraDescription? _firstCamera;
+
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required String title});
   
@@ -23,12 +31,23 @@ class MyHomePage extends StatefulWidget {
 
 class _HomePageState extends State<MyHomePage> {
 
+ 
+  
+
 
   @override
-  void initState() {
-    super.initState();
-    
-  }
+void initState() {
+  super.initState();
+  _loadCameras();
+}
+
+Future<void> _loadCameras() async {
+  _cameras = await availableCameras();
+  setState(() {
+    _firstCamera = _cameras.first;
+  });
+}
+
 
   int _counter = 0;
   String _imageUrl = 'https://picsum.photos/250?image=10'; // Valor inicial
@@ -46,6 +65,23 @@ class _HomePageState extends State<MyHomePage> {
       setState(() => _imageUrl = '');
     }
   }
+
+
+  Future<void> _openCamera() async {
+  if (_firstCamera == null) return;
+  final result = await Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (context) => TakePictureScreen(camera: _firstCamera!),
+    ),
+  );
+  if (result != null && result is String) {
+    setState(() {
+      _imagePath = result;
+      _imageUrl = ''; // limpiar imagen de Internet
+    });
+  }
+}
+
 
   @override
   void didChangeDependencies() {
@@ -84,7 +120,25 @@ class _HomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final data = context.watch<AppData>();
-    
+    final imageWidget = _imagePath.isNotEmpty
+        ? Image.file(
+            File(_imagePath),
+            width: 250,
+            height: 250,
+            fit: BoxFit.cover,
+          )
+        : Image.network(
+            _imageUrl,
+            width: 250,
+            height: 250,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return const Text(
+                'No se pudo cargar la imagen',
+                style: TextStyle(color: Colors.red),
+              );
+            },
+          );
 
     return Scaffold(
       appBar: AppBar(title: const Text("Estado del Widget")),
@@ -141,6 +195,7 @@ class _HomePageState extends State<MyHomePage> {
                 return const Text("No se pudo cargar la imagen", style: TextStyle(color: Colors.red));
               },
             ),
+            
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: _getNewImage,
@@ -150,7 +205,10 @@ class _HomePageState extends State<MyHomePage> {
               onPressed: _incrementCounter,
               child: const Text("Aumentar contador"),
             ),
-            
+            ElevatedButton(
+              onPressed: _openCamera,
+              child: const Text("Tomar con cámara"),
+            ),
           ],
         ),
       ),
