@@ -186,15 +186,7 @@ Future<void> _loadCameras() async {
   
              Text("Contador: $_counter"),
             const SizedBox(height: 10),
-            Image.network(
-              _imageUrl.isNotEmpty ? _imageUrl : '',
-              width: 250,
-              height: 250,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return const Text("No se pudo cargar la imagen", style: TextStyle(color: Colors.red));
-              },
-            ),
+            imageWidget,
             
             const SizedBox(height: 10),
             ElevatedButton(

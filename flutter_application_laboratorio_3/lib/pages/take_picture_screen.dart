@@ -1,10 +1,11 @@
-import 'dart:io';
+import 'dart:io'; // Se usa implícitamente para representar el archivo de imagen
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_laboratorio_3/pages/preview_picture_screen.dart';
+import 'package:logger/logger.dart';
 
 class TakePictureScreen extends StatefulWidget {
   final CameraDescription camera;
+
   const TakePictureScreen({super.key, required this.camera});
 
   @override
@@ -14,6 +15,7 @@ class TakePictureScreen extends StatefulWidget {
 class _TakePictureScreenState extends State<TakePictureScreen> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
+  final Logger logger = Logger(); // Reemplazo de print()
 
   @override
   void initState() {
@@ -32,10 +34,15 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
     try {
       await _initializeControllerFuture;
       final image = await _controller.takePicture();
-      if (!context.mounted) return;
-      Navigator.of(context).pop(image.path); // << retorna la ruta
+
+      if (!mounted) return;
+
+      logger.i("Foto tomada con éxito: ${image.path}");
+
+      // Devolvemos la ruta de la imagen al widget anterior
+      Navigator.of(context).pop(image.path);
     } catch (e) {
-      print("Error al tomar foto: $e");
+      logger.e("Error al tomar la foto", error: e);
     }
   }
 
