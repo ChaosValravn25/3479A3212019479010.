@@ -11,6 +11,8 @@ import 'package:http/http.dart' as http;
 import 'package:camera/camera.dart';
 import 'package:flutter_application_laboratorio_3/pages/take_picture_screen.dart';
 import 'dart:io';
+import 'package:flutter_application_laboratorio_3/pages/gallery_page.dart';
+List<String> _galleryImages = [];
 String _imagePath = '';
 List<CameraDescription> _cameras = [];
 CameraDescription? _firstCamera;
@@ -27,13 +29,7 @@ class MyHomePage extends StatefulWidget {
 
 }
 
-
-
 class _HomePageState extends State<MyHomePage> {
-
- 
-  
-
 
   @override
 void initState() {
@@ -77,6 +73,7 @@ Future<void> _loadCameras() async {
   if (result != null && result is String) {
     setState(() {
       _imagePath = result;
+      _galleryImages.add(result); // Guarda en la lista de galería
       _imageUrl = ''; // limpiar imagen de Internet
     });
   }
@@ -192,6 +189,14 @@ Future<void> _loadCameras() async {
             ElevatedButton(
               onPressed: _getNewImage,
               child: const Text("Actualizar imagen"),
+            ),
+            ElevatedButton(
+            onPressed: () {
+            Navigator.push(context,MaterialPageRoute(builder: (_) => GalleryPage(imagePaths: _galleryImages),
+            ) ,
+            );
+          },
+         child: const Text("Ver galería"),
             ),
             ElevatedButton(
               onPressed: _incrementCounter,
