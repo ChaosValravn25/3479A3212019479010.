@@ -72,7 +72,7 @@ dev_dependencies:
 flutter:
 
   flutter_launcher_icons:
-  android: "ic_launcher"
+  android: true
   ios: false
   image_path: "assets/icons/huella.png"
   min_sdk_android: 21
