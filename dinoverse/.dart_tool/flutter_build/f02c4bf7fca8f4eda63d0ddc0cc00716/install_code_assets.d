@@ -1,0 +1,1 @@
+ D:\\trabajos\ de\ dispositvos\ mobiles\\Dispositivo_Mobiles\\dinoverse\\.dart_tool\\flutter_build\\f02c4bf7fca8f4eda63d0ddc0cc00716\\native_assets.json: 
