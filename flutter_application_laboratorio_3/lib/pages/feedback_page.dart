@@ -11,16 +11,16 @@ class FeedbackPage extends StatefulWidget {
 }
 
 class _FeedbackPageState extends State<FeedbackPage> {
-  late Future<List<UserFeedback>> _feedbackQuestions;
+  late Future<List<PreguntaFeedback>> _feedbackQuestions;
 
-  Future<List<UserFeedback>> _loadQuestions() async {
+  Future<List<PreguntaFeedback>> _loadQuestions() async {
     final String jsonStr = await rootBundle.loadString('assets/json/preguntas.json');
     final Map<String, dynamic> jsonMap = jsonDecode(jsonStr);
-    final List<UserFeedback> questions = [];
+    final List<PreguntaFeedback> questions = [];
 
     for (var category in jsonMap.values) {
       for (var question in category) {
-        questions.add(UserFeedback.fromJson(question));
+        questions.add(PreguntaFeedback.fromJson(question));
       }
     }
 
@@ -37,7 +37,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Tu Opinión")),
-      body: FutureBuilder<List<UserFeedback>>(
+      body: FutureBuilder<List<PreguntaFeedback>>(
         future: _feedbackQuestions,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -58,7 +58,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
               return Card(
                 child: ListTile(
                   title: Text(q.titulo),
-                  subtitle: Text(q.max),
+                  subtitle: Text("Máx: ${q.max}\nMín: ${q.min}"),
                   trailing: Text("${q.valor} ⭐"),
                 ),
               );

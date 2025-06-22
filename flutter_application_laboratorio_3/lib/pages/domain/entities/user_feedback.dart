@@ -19,4 +19,35 @@ class UserFeedback {
       'compartir': compartir,
     };
   }
+
+  factory UserFeedback.fromJson(Map<String, dynamic> json) {
+    return UserFeedback(
+      userId: json['userId'] ?? '',
+      usabilidad: Map<String, int>.from(json['usabilidad'] ?? {}),
+      contenido: Map<String, int>.from(json['contenido'] ?? {}),
+      compartir: Map<String, int>.from(json['compartir'] ?? {}),
+    );
+  }
+}
+class PreguntaFeedback {
+  final String titulo;
+  final int valor;
+  final String min;
+  final String max;
+
+  PreguntaFeedback({
+    required this.titulo,
+    required this.valor,
+    required this.min,
+    required this.max,
+  });
+
+  factory PreguntaFeedback.fromJson(Map<String, dynamic> json) {
+    return PreguntaFeedback(
+      titulo: json['titulo'],
+      valor: json['valor'],
+      min: json['min'],
+      max: json['max'],
+    );
+  }
 }
