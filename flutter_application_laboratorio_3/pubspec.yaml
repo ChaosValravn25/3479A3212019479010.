@@ -76,6 +76,7 @@ flutter:
     - assets/images/t_rex.png
     - assets/images/triceratops.png
     - assets/images/brachiosaurus.png
+    - assets/json/preguntas.json
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
