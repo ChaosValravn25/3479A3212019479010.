@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';//para que funcione las imagenes d
 class SplashScreen extends StatelessWidget {
 
   const SplashScreen({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
