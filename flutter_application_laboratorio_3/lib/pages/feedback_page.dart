@@ -14,7 +14,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
   late Future<List<PreguntaFeedback>> _feedbackQuestions;
 
   Future<List<PreguntaFeedback>> _loadQuestions() async {
-    final String jsonStr = await rootBundle.loadString('assets/json/preguntas.json');
+    final String jsonStr = await rootBundle.loadString('pages/json/preguntas.json');
     final Map<String, dynamic> jsonMap = jsonDecode(jsonStr);
     final List<PreguntaFeedback> questions = [];
 
