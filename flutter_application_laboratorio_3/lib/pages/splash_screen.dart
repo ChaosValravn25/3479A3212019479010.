@@ -4,6 +4,9 @@ import 'home_page.dart';
 import 'package:flutter_svg/flutter_svg.dart';//para que funcione las imagenes de svg
 
 class SplashScreen extends StatelessWidget {
+
+  const SplashScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 3), () {
