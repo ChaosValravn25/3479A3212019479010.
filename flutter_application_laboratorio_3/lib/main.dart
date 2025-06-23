@@ -15,10 +15,12 @@ class DinoVerseApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'DinoVerse',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Lato',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
+        
       ),
       home: SplashScreen(),
     );

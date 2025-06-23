@@ -18,7 +18,7 @@ class SplashScreen extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: SvgPicture.asset('assets/icons/snake.svg'), // o usa otro asset visible
+        child: SvgPicture.asset('assets/icons/animal_3.svg'), // o usa otro asset visible
       ),
     );
   }

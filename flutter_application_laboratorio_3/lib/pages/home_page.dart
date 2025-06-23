@@ -4,6 +4,9 @@ import 'package:logger/logger.dart';//para emplear el logger
 import 'package:flutter_application_laboratorio_3/pages/about.dart';//llamar el about
 import 'package:flutter_application_laboratorio_3/pages/list_content.dart';//llamar list_content
 import 'package:flutter_application_laboratorio_3/pages/trivia_page.dart';
+import 'package:flutter_application_laboratorio_3/pages/preferences_page.dart';
+import 'package:flutter_application_laboratorio_3/pages/activity_page.dart';
+import 'package:flutter_application_laboratorio_3/pages/feedback_page.dart';
 
 class HomePage extends StatelessWidget {
   final Logger logger = Logger();
@@ -26,7 +29,7 @@ class HomePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 SvgPicture.asset(
-                  'assets/icons/snake.svg',
+                  'assets/icons/animal_3.svg',
                   width: 120,
                 ),
                 const SizedBox(height: 16),
@@ -56,8 +59,31 @@ class HomePage extends StatelessWidget {
                   ),
                   child: const Text("Sobre la App"),
                 ),
-              ],
-            ),
+                ElevatedButton(
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const PreferencesPage()),
+                  ),
+                  child: const Text("Preferencias"),
+                ),
+                ElevatedButton(
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const ActivityPage()),
+                  ),
+                  child: const Text("Actividades"),
+                ),
+                ElevatedButton(
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const FeedbackPage()),
+                  ),
+                  child: const Text("Tu opinión"),
+                ),
+
+
+              ], 
+            ),           
           ),
         ),
       ),

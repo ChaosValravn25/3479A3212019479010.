@@ -71,6 +71,11 @@ flutter:
   assets:
     - assets/icons/snake.svg
     - assets/images/Spinosaurus.png
+    - assets/icons/animal_3.svg
+    - assets/images/velociraptor.png
+    - assets/images/t_rex.png
+    - assets/images/triceratops.png
+    - assets/images/brachiosaurus.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
