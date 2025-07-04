@@ -15,7 +15,7 @@ class DetailPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Image.asset(dinosaur.imagePath),
+            Image.asset(dinosaur.image),
             const SizedBox(height: 20),
             Text(
               dinosaur.description,

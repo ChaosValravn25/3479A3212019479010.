@@ -13,7 +13,7 @@ class DinosaurCard extends StatelessWidget {
       elevation: 3,
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: ListTile(
-        leading: Image.asset(dinosaur.imagePath, width: 50, fit: BoxFit.cover),
+        leading: Image.asset(dinosaur.image, width: 50, fit: BoxFit.cover),
         title: Text(dinosaur.name),
         onTap: () => Navigator.push(
           context,

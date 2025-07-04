@@ -10,27 +10,27 @@ class ListContent extends StatelessWidget {
   final List<Dinosaur> dinos = [
     Dinosaur(
       name: "Tyrannosaurus Rex",
-      imagePath: 'assets/images/t_rex.png',
+      image: 'assets/images/t_rex.png',
       description: "Uno de los depredadores más grandes del periodo Cretácico.",
     ),
      Dinosaur(
       name: "Triceratops",
-      imagePath: 'assets/images/triceratops.png',
+      image: 'assets/images/triceratops.png',
       description: "Herbívoro con tres cuernos y un escudo óseo.",
     ),
     Dinosaur(
       name: "Velociraptor",
-      imagePath: 'assets/images/velociraptor.png',
+      image: 'assets/images/velociraptor.png',
       description: "Dinosaurio ágil y rápido, cazador en grupo.",
     ),
     Dinosaur(
       name: "Brachiosaurus",
-      imagePath: 'assets/images/brachiosaurus.png',
+      image: 'assets/images/brachiosaurus.png',
       description: "Gigante herbívoro con cuello largo del Jurásico.",
     ),
     Dinosaur(
       name: "Spinosaurus",
-      imagePath: 'assets/images/Spinosaurus.png',
+      image: 'assets/images/Spinosaurus.png',
       description: "Dinosaurio semiacuático con espina dorsal distintiva.",
     ),
   ];
